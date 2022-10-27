@@ -30,9 +30,11 @@ pipeline {
             }
         }
         stage('Build image') {
+         steps {
             dir("arith-service"){
                 dockerImage = docker.build("nagabhushanamn/arith-service:latest")
             }
+          }
         }
         stage('Push image') {
             withDockerRegistry([ credentialsId: "docker-hub-credentials", url: "" ]) {
