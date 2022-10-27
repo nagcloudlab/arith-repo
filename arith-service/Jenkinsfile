@@ -29,5 +29,12 @@ pipeline {
                 }
             }
         }
+        stage('Build-Docker-Image') {
+            steps {
+                dir("arith-service"){
+                    sh "docker build -t nagabhushanamn/arith-service ."
+                }
+            }
+        }
     }
 }
