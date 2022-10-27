@@ -29,11 +29,14 @@ pipeline {
                 }
             }
         }
-        stage('Build-Docker-Image') {
-            steps {
-                dir("arith-service"){
-                    sh "docker build -t nagabhushanamn/arith-service ."
-                }
+        stage('Build image') {
+            dir("arith-service"){
+                dockerImage = docker.build("nagabhushanamn/arith-service:latest")
+            }
+        }
+        stage('Push image') {
+            withDockerRegistry([ credentialsId: "docker-hub-credentials", url: "" ]) {
+                dockerImage.push()
             }
         }
     }
