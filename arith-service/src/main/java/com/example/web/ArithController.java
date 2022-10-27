@@ -28,7 +28,7 @@ public class ArithController {
     public ResponseEntity<String> mul(
             @PathVariable("n1") int n1,
             @PathVariable("n2") int n2) {
-        int result = n1 - n2
+        int result = n1 - n2;
         return ResponseEntity.ok(String.valueOf(result));
     }
 
