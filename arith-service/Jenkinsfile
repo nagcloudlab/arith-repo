@@ -32,7 +32,9 @@ pipeline {
         stage('Build image') {
          steps {
             dir("arith-service"){
+               script {
                 dockerImage = docker.build("nagabhushanamn/arith-service:latest")
+               }
             }
           }
         }
