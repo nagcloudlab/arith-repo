@@ -1,6 +1,6 @@
 FROM adoptopenjdk:16_36-jre-hotspot as builder
 WORKDIR extracted
-ADD .target/*.jar app.jar
+ADD ./target/arith-service-0.0.1-SNAPSHOT.jar app.jar
 RUN java -Djarmode=layertools -jar app.jar extract
 
 FROM adoptopenjdk:16_36-jre-hotspot
